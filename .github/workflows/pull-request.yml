@@ -23,10 +23,12 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: .net restore
-        run: |
-          dotnet nuget update source github --username "${{ secrets.NUGET_USER }}" --password "${{ secrets.NUGET_PWD }}" --store-password-in-clear-text
-          dotnet restore ${{ env.SOLUTION_FILE }}
+      # - name: .net restore
+      #   run: dotnet restore ${{ env.SOLUTION_FILE }}
+#        dotnet nuget update source github --username "${{ secrets.NUGET_USER }}" --password "${{ secrets.NUGET_PWD }}" --store-password-in-clear-text
+
+      - name: .NET Build with Analyzers
+        run: dotnet build ${{ env.SOLUTION_FILE }} /p:EnableNETAnalyzers=true
 
       - name: code style
         run: dotnet format ${{ env.SOLUTION_FILE }} --no-restore --severity error --verify-no-changes
@@ -34,8 +36,8 @@ jobs:
       - name: .net test
         run: dotnet test ${{ env.SOLUTION_FILE }} --no-restore --collect:"XPlat Code Coverage" --settings coverlet.runsettings.xml
 
-      - name: code coverage report
-        run: |
-          dotnet tool install -g dotnet-reportgenerator-globaltool
-          reportgenerator -reports:"*.Tests/TestResults/*/coverage.cobertura.xml" -targetdir:"coveragereport" -reporttypes:TextSummary
-          more coveragereport/Summary.txt
+# - name: code coverage report
+#   run: |
+#     dotnet tool install -g dotnet-reportgenerator-globaltool
+#     reportgenerator -reports:"*.Tests/TestResults/*/coverage.cobertura.xml" -targetdir:"coveragereport" -reporttypes:TextSummary
+#     more coveragereport/Summary.txt
