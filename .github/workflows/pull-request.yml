@@ -23,10 +23,10 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: .net restore
-        run: |
-          dotnet nuget update source github --username "${{ secrets.NUGET_USER }}" --password "${{ secrets.NUGET_PWD }}" --store-password-in-clear-text
-          dotnet restore ${{ env.SOLUTION_FILE }}
+#      - name: .net restore
+#       run: |
+#        dotnet nuget update source github --username "${{ secrets.NUGET_USER }}" --password "${{ secrets.NUGET_PWD }}" --store-password-in-clear-text
+#       dotnet restore ${{ env.SOLUTION_FILE }}
 
       - name: code style
         run: dotnet format ${{ env.SOLUTION_FILE }} --no-restore --severity error --verify-no-changes
