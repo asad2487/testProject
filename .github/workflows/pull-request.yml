@@ -7,7 +7,7 @@ on:
       - '!main'
 
 env:
-  SOLUTION_FILE: ./AmeriCorpsMemberPortal.sln
+  SOLUTION_FILE: ./TestProject.sln
 
 jobs:
   build-and-test:
