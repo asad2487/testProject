@@ -8,6 +8,8 @@ namespace TestProject
 {
     public class Calculator
     {
+        //added for testing
+
         // Method to add two numbers
         public double Add(double a, double b)
         {
