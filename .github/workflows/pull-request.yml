@@ -28,6 +28,9 @@ jobs:
 #        dotnet nuget update source github --username "${{ secrets.NUGET_USER }}" --password "${{ secrets.NUGET_PWD }}" --store-password-in-clear-text
 #       dotnet restore ${{ env.SOLUTION_FILE }}
 
+      - name: .NET Build with Analyzers
+        run: dotnet build ${{ env.SOLUTION_FILE }} /p:EnableNETAnalyzers=true
+
       - name: code style
         run: dotnet format ${{ env.SOLUTION_FILE }} --no-restore --severity error --verify-no-changes
 
