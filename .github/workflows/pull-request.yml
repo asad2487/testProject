@@ -24,9 +24,8 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: .net restore
-        run: |
+        run: dotnet restore ${{ env.SOLUTION_FILE }}
 #        dotnet nuget update source github --username "${{ secrets.NUGET_USER }}" --password "${{ secrets.NUGET_PWD }}" --store-password-in-clear-text
-        dotnet restore ${{ env.SOLUTION_FILE }}
 
       - name: .NET Build with Analyzers
         run: dotnet build ${{ env.SOLUTION_FILE }} /p:EnableNETAnalyzers=true
