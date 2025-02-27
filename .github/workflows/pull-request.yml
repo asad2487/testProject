@@ -34,8 +34,8 @@ jobs:
       - name: .net test
         run: dotnet test ${{ env.SOLUTION_FILE }} --no-restore --collect:"XPlat Code Coverage" --settings coverlet.runsettings.xml
 
-      - name: code coverage report
-        run: |
-          dotnet tool install -g dotnet-reportgenerator-globaltool
-          reportgenerator -reports:"*.Tests/TestResults/*/coverage.cobertura.xml" -targetdir:"coveragereport" -reporttypes:TextSummary
-          more coveragereport/Summary.txt
+# - name: code coverage report
+#   run: |
+#     dotnet tool install -g dotnet-reportgenerator-globaltool
+#     reportgenerator -reports:"*.Tests/TestResults/*/coverage.cobertura.xml" -targetdir:"coveragereport" -reporttypes:TextSummary
+#     more coveragereport/Summary.txt
