@@ -31,7 +31,7 @@ namespace CalculatorTests
         public void Subtract_ShouldReturnCorrectDifference()
         {
             // Arrange
-            double num1 = 4;
+            double num1 = 10;
             double num2 = 5;
 
             // Act
